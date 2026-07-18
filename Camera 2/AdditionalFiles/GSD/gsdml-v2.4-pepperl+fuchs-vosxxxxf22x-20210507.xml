@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ISO15745Profile xmlns="http://www.profibus.com/GSDML/2003/11/DeviceProfile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.profibus.com/GSDML/2003/11/DeviceProfile ..\xsd\GSDML-DeviceProfile-V2.4.xsd">
+	<ProfileHeader>
+		<ProfileIdentification>PROFINET Device Profile</ProfileIdentification>
+		<ProfileRevision>1.00</ProfileRevision>
+		<ProfileName>Device Profile for PROFINET Devices</ProfileName>
+		<ProfileSource>PROFIBUS Nutzerorganisation e. V. (PNO)</ProfileSource>
+		<ProfileClassID>Device</ProfileClassID>
+		<ISO15745Reference>
+			<ISO15745Part>4</ISO15745Part>
+			<ISO15745Edition>1</ISO15745Edition>
+			<ProfileTechnology>GSDML</ProfileTechnology>
+		</ISO15745Reference>
+	</ProfileHeader>
+	<ProfileBody>
+		<DeviceIdentity VendorID="0x005D" DeviceID="0x1300">
+			<InfoText TextId="T_PROFINET_IO_DEV_DESCRIPTION"/>
+			<VendorName Value="Pepperl+Fuchs"/>
+		</DeviceIdentity>
+		<DeviceFunction>
+			<Family MainFamily="I/O" ProductFamily="Identification Systems"/>
+		</DeviceFunction>
+		<ApplicationProcess>
+			<DeviceAccessPointList>
+				<DeviceAccessPointItem ID="DAP 1" PhysicalSlots="0..2" ModuleIdentNumber="0x00000002" MinDeviceInterval="1024" ImplementationType="NetArm" DNS_CompatibleName="vos" FixedInSlots="0" 
+				      ObjectUUID_LocalIndex="1" AddressAssignment="DCP;DHCP;LOCAL" RequiredSchemaVersion="V2.2" MaxSupportedRecordSize="4068" 
+				      ParameterizationSpeedupSupported="false" DeviceAccessSupported="false" PNIO_Version="V2.2" CheckDeviceID_Allowed="true" NameOfStationNotTransferable="true">
+					<ModuleInfo CategoryRef="ID_PF_Vision">
+						<Name TextId="T_V1_0"/>
+						<InfoText TextId="T_PROFINET_IO_DEV_DESCRIPTION_DAP1"/>
+						<VendorName Value="Pepperl+Fuchs"/>
+						<OrderNumber Value="VOSxxxx-F22x"/>
+						<HardwareRelease Value="V1.0"/>
+						<SoftwareRelease Value="V1.8"/>
+					</ModuleInfo>
+					<SubslotList>
+						<SubslotItem SubslotNumber="32768" TextId="IDT_SS_Interface"/>
+						<SubslotItem SubslotNumber="32769" TextId="IDT_SS_Port1"/>
+					</SubslotList>
+					<IOConfigData MaxInputLength="264" MaxOutputLength="264"/>
+					<UseableModules>
+						<ModuleItemRef ModuleItemTarget="IDM_1" FixedInSlots="1"/>
+						<ModuleItemRef ModuleItemTarget="IDM_2" FixedInSlots="2"/>
+						<!-- The references point to the modules of  ModuleList -->
+					</UseableModules>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="IDS_D1" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+							<IOData/><ModuleInfo><Name TextId="T_V1_0"/><InfoText TextId="T_PROFINET_IO_DEV_DESCRIPTION_DAP1"/></ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+					<SystemDefinedSubmoduleList>
+						<InterfaceSubmoduleItem ID="IDS_1I" SubslotNumber="32768" SubmoduleIdentNumber="0x0002" SupportedRT_Classes="RT_CLASS_1" TextId="T_DAP_InterfaceModule" IsochroneModeSupported="false" SupportedProtocols="LLDP" DCP_HelloSupported="false">
+							<ApplicationRelations NumberOfAdditionalInputCR="0" NumberOfAdditionalMulticastProviderCR="0" NumberOfAdditionalOutputCR="0" NumberOfMulticastConsumerCR="0">
+								<TimingProperties SendClock="32 64 128" ReductionRatio="1 2 4 8 16 32 64 128 256 512"/>
+							</ApplicationRelations>
+						</InterfaceSubmoduleItem>
+						<PortSubmoduleItem ID="IDS_1P" SubslotNumber="32769" SubmoduleIdentNumber="0x0003" MAUTypes="16" TextId="T_Port1">
+						<MAUTypeList>
+						<MAUTypeItem Value="16" AdjustSupported="true"/>
+						</MAUTypeList>
+						</PortSubmoduleItem>
+					</SystemDefinedSubmoduleList>
+					<Graphics>
+						<GraphicItemRef Type="DeviceSymbol" GraphicItemTarget="ID_Graph_1"/>
+					</Graphics>
+			</DeviceAccessPointItem>
+      </DeviceAccessPointList>
+
+      <!-- ============================================================================================ -->
+			<!--                                  MODULE LIST                                                 -->
+			<!-- ============================================================================================ -->
+			<ModuleList>
+				<!--***********************************************-->
+				<!--***** virtual input module IDM_1, 254 byte ***-->
+				<!--***********************************************-->
+				<ModuleItem ID="IDM_1" ModuleIdentNumber="0x00000030">
+					<ModuleInfo CategoryRef="Virtual_IO">
+						<Name TextId="T_virtual_I_254_byte"/>
+						<InfoText TextId="T_virtual_input_module_254_info"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<!--******* submodule 1 ******-->
+						<VirtualSubmoduleItem ID="ID_M1S1" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+							<IOData>
+								<Input Consistency="All items consistency">
+									<DataItem DataType="OctetString" TextId="T_Input" Length="254"/>
+								</Input>
+							</IOData>
+							<ModuleInfo>
+								<Name TextId="T_virtual_I_254_byte"/>
+								<InfoText TextId="T_virtual_input_module_254_info"/>
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+				<!--***************************************************-->
+				<!--***** virtual output module IDM_2, 254 byte *****-->
+				<!--***************************************************-->
+				<ModuleItem ID="IDM_2" ModuleIdentNumber="0x00000031">
+					<ModuleInfo CategoryRef="Virtual_IO">
+						<Name TextId="T_virtual_O_254_byte"/>
+						<InfoText TextId="T_virtual_output_module_254_info"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<!--******* submodule 1 ******-->
+						<VirtualSubmoduleItem ID="ID_M2S1" SubmoduleIdentNumber="0x00000001" MayIssueProcessAlarm="false">
+							<IOData>
+								<Output Consistency="All items consistency">
+									<DataItem DataType="OctetString" TextId="T_Output" Length="254"/>
+								</Output>
+							</IOData>
+							<ModuleInfo>
+								<Name TextId="T_virtual_O_254_byte"/>
+								<InfoText TextId="T_virtual_output_module_254_info"/>
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+			</ModuleList>
+			<!-- ============================================================================================ -->
+			<!--      value list, channel-diagnosis list, graphic List, category List                         -->
+			<!-- ============================================================================================ -->
+			<GraphicsList>
+				<GraphicItem ID="ID_Graph_1" GraphicFile="GSDML-0214-0006-PF_VOS"/>
+			</GraphicsList>
+			<CategoryList>
+				<CategoryItem ID="ID_PF_Vision" TextId="T_Category_PF_Vision"/>
+				<CategoryItem ID="Virtual_IO" TextId="T_Virtual_IO"/>
+			</CategoryList>
+			<!-- ============================================================================================ -->
+			<!--                                 TEXT LISTs (english, german)                                 -->
+			<!-- ============================================================================================ -->
+			<ExternalTextList>
+				<!--===================================-->
+				<!--    primary language: english      -->
+				<!--===================================-->
+				<PrimaryLanguage>
+					<!--  -->
+					
+					
+					<!--  -->
+					
+					<Text TextId="T_V1_0" Value="default module, no PDEV"/>
+					<Text TextId="T_PROFINET_IO_DEV_DESCRIPTION" Value="P+F Vision Identification Device PROFINET IO"/>
+					<Text TextId="T_PROFINET_IO_DEV_DESCRIPTION_DAP1" Value="DAP1 P+F Vision Ident IO"/>
+					
+					<Text TextId="IDT_SS_Interface" Value="X1"/>
+					<Text TextId="IDT_SS_Port1" Value="X1 P1"/>
+					<Text TextId="T_DAP_InterfaceModule" Value="Interface"/>
+					<Text TextId="T_Port1" Value="Port 1"/>
+					<Text TextId="T_Category_PF_Vision" Value="Pepperl+Fuchs Vision Identification Device"/>
+					<!--**** module categories**** -->
+					<Text TextId="T_Virtual_IO" Value="Virtual IO"/>
+					
+					<Text TextId="T_Input" Value="Inputs"/>
+					<Text TextId="T_Output" Value="Outputs"/>
+					<!--**** virtual modules ****-->
+					<Text TextId="T_virtual_I_254_byte" Value="input module 254 byte"/>
+					<Text TextId="T_virtual_input_module_254_info" Value="virtual input module, 254 byte data"/>
+					<Text TextId="T_virtual_O_254_byte" Value="output module 254 byte"/>
+					<Text TextId="T_virtual_output_module_254_info" Value="virtual output module, 254 byte data"/>
+					<!--**** other text definitions ****-->
+				</PrimaryLanguage>
+				<!--======================================-->
+				<!--  second language: for example german -->
+				<!--======================================-->
+				<Language xml:lang="de">
+					<!--  -->
+					
+					
+					<!--  -->
+					
+					<Text TextId="T_V1_0" Value="standard Modul, kein PDEV"/>
+					<Text TextId="T_PROFINET_IO_DEV_DESCRIPTION" Value="Pepperl+Fuchs Vision Identification Device PROFINET IO"/>
+					<Text TextId="T_PROFINET_IO_DEV_DESCRIPTION_DAP1" Value="DAP1 P+F Vision Ident IO"/>
+					
+					<Text TextId="IDT_SS_Interface" Value="X1"/>
+					<Text TextId="IDT_SS_Port1" Value="X1 P1"/>
+					<Text TextId="T_DAP_InterfaceModule" Value="Interface"/>
+					<Text TextId="T_Port1" Value="Port 1"/>
+					<Text TextId="T_Category_PF_Vision" Value="Pepperl+Fuchs Vision Identification Device"/>
+					<!--**** Baugruppeneinteilung ****-->
+					<Text TextId="T_Virtual_IO" Value="Virtual IO"/>
+					
+					<Text TextId="T_Input" Value="Inputs"/>
+					<Text TextId="T_Output" Value="Outputs"/>
+					<!--**** virtuelle Module ****-->
+					<Text TextId="T_virtual_I_254_byte" Value="Eingabemodul,  254 Byte"/>
+					<Text TextId="T_virtual_input_module_254_info" Value="virtuelles Eingabemodul,  254 Byte Daten"/>
+					<Text TextId="T_virtual_O_254_byte" Value="Ausgabemodul, 254 Byte"/>
+					<Text TextId="T_virtual_output_module_254_info" Value="virtuelles Ausgabemodul, 254 Byte Daten"/>
+					<!--**** sonstige Textdefinitionen ****-->
+				</Language>
+			</ExternalTextList>
+		</ApplicationProcess>
+	</ProfileBody>
+</ISO15745Profile>
